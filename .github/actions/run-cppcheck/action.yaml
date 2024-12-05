@@ -26,4 +26,4 @@ runs:
       run: mkdir cppcheck_output
     - name: "Run cppcheck"
       shell: bash
-      run: cppcheck -i eBPF-Discovery/third_party eBPF-Discovery
+      run: cppcheck -i $GITHUB_WORKSPACE/third_party $GITHUB_WORKSPACE 
