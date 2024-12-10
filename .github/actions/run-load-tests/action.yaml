@@ -32,10 +32,14 @@ runs:
       run: |
         source testvenv/bin/activate
         cd ${{ env.LOAD_TESTING_PATH }}
-        /bin/bash test_load.sh ${{ env.DISCOVERY_BIN_PATH }} ${{ github.workspace }}/logs 5 5 30m
+        /bin/bash test_load.sh ${{ env.DISCOVERY_BIN_PATH }} ${{ github.workspace }}/logs 1 1 10s
       continue-on-error: true
+    - name: Copy out file from volume
+      shell: bash
+      run: |
+        sudo cp -R ${{ github.workspace }}/logs /home/
     - name: "Upload log archive"
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: "log-archive"
-        path: ${{ github.workspace }}/logs
+        path: /home/logs

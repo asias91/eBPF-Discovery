@@ -14,9 +14,7 @@
 
 name: "Build and load-test Debug"
 
-on:
-  schedule:
-    - cron: "0 0 * * *"
+on: push
 
 jobs:
   build-and-load-test-debug:
