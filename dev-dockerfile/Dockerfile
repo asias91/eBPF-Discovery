@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 RUN apt-get update -y && \
     # for add-apt-repository
-    apt-get install -y software-properties-common && \
+    apt-get install -y software-properties-common cppcheck && \
     # needed for updated libstdc++-9-dev containing filesystem namespace
     add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
     apt-get install -y wget lsb-release gpg libelf-dev libstdc++-9-dev python3-pip git && \
